@@ -1,0 +1,77 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jul 24, 2023 at 11:22 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.1.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `pay_secure`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `currencies`
+--
+
+CREATE TABLE `currencies` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `symbol` varchar(10) DEFAULT NULL,
+  `code` varchar(100) DEFAULT NULL,
+  `logo` varchar(100) DEFAULT NULL,
+  `exchange_rate` decimal(20,8) NOT NULL DEFAULT 0.00000000,
+  `is_active` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1 = active, 0 = inactive',
+  `currency_type` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0 = crypto, 1 = Fiat',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `currencies`
+--
+
+INSERT INTO `currencies` (`id`, `name`, `symbol`, `code`, `logo`, `exchange_rate`, `is_active`, `currency_type`, `created_at`, `updated_at`) VALUES
+(1, 'US Doller', '$', 'USD', 'usd.png', '1.00000000', 1, 1, '2020-11-12 03:14:08', '2023-02-02 00:07:41'),
+(2, 'Euro', '€', 'EUR', 'eur.png', '0.92000000', 1, 1, '2020-11-12 03:14:55', '2023-02-02 00:08:15'),
+(3, 'British pound', '£', 'GBP', 'gbp.png', '0.81000000', 1, 1, '2020-11-18 02:15:42', '2023-02-02 00:09:54'),
+(4, 'BITCOIN', '฿', 'BTC', 'btc.png', '0.00004349', 1, 0, '2021-01-20 01:49:09', '2023-01-21 06:34:17'),
+(7, 'Nigeria Currency', '₦', 'NGN', 'ngn.png', '455.06000000', 0, 1, '2023-01-14 03:33:12', '2023-02-02 00:10:03');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `currencies`
+--
+ALTER TABLE `currencies`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `currencies`
+--
+ALTER TABLE `currencies`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
